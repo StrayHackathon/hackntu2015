@@ -59,15 +59,24 @@
         .ham-wrapper {
           height: 100%;
           transition: all 300ms ease-in-out;  
-          margin: 1em 0;
           padding: 0;
         }
         .menu {
           font-size:2em;
           font-family: 'Roboto', sans-serif;
           color: #333;
+          padding: 0;
+          margin: 0;
         }
-
+        .menu-header {
+          height: 16em;
+          width: 100%;
+          background: rgb(190,214,47);
+          padding: 0;
+          margin: 0;
+          left: -14px;
+          position: relative;
+        }
         .menu div {
           margin: 1em;
           padding-bottom: 1em;
@@ -98,12 +107,35 @@
           width: 80%;
           transition: all 300ms;
           font-size: 1em;
+          padding: 0;
+          margin: 0;
         }
         .menu--on {
+          position: absolute;
+          height: 100%;
+          top: -1em;
           left: 0;
           box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.2);
           transition: all 300ms;
           font-family: 'cwTeXHei', serif;
+          padding: 0;
+          margin: 0;
+        }
+        .menu-img-wrapper {
+          width: 5em;
+          height: 5em;
+          border-radius: 50%;
+          box-shadow: 0 0 5px rgba(20,20,20,0.5);
+          background-color: gray;
+          position: relative;
+          top: 5em;
+        }
+        .menu-name-wrapper {
+          color: white;
+          font-weight: bold;
+          position: relative;
+          left: 1em;
+          top: 8em;
         }
         .material-design-hamburger button {
           display: block;
@@ -124,30 +156,53 @@
           text-decoration: none;
         }
         .material-design-hamburger__icon {
+          position: absolute;
           padding: 0;
           padding-left: 1em;
           cursor: pointer;
           height: 3em;
+          z-index: 999;
         }
-
+        .material-design-hamburger__layer, .menu-stat, .menu-search {
+          display: inline-block;
+          vertical-align: bottom;
+        }
+        .menu-stat {
+          color: white;
+          position: relative;
+          left: 3em;
+          top: -0.66em;
+          font-weight: bold;
+        }
+        .menu-search {
+          position: relative;
+          float: right;
+          right: 1.5em;
+          top: 0.2em;
+        }
+        .menu-search img {
+          width: 1.8em;
+          height: 1.8em;
+        }
         .material-design-hamburger__layer {
           display: block;
           width: 30px;
-          height: 4px;
+          height: 3px;
           background: black;
           position: relative;
+          background-color: white;
           animation-duration: 300ms;
           animation-timing-function: ease-in-out;
         }
-
         .material-design-hamburger__layer:before, .material-design-hamburger__layer:after {
           display: block;
           width: inherit;
-          height: 4px;
+          height: 3px;
           position: absolute;
           background: inherit;
           left: 0;
           content: '';
+          background-color: white;
           animation-duration: 300ms;
           animation-timing-function: ease-in-out;
         }
@@ -229,12 +284,11 @@
           }
         }
 
-
         /*btn-block*/
         .btn-block-wrapper {
             width: 100%;
             text-align: center;
-            padding: 2%;
+            padding-top: 1em;
         }
         .start-walk-btn {
             border: none;
@@ -250,6 +304,11 @@
             color: white;
             font-size: 1.2.em;
             box-shadow: 0px 0px 1px rgba(0,0,0,0.1);
+        }
+        .icon-1 {
+          width: 180px;
+          height: 70px;
+          margin-top: 5em; 
         }
         .icon-1, .start-walk-btn {
             display: block;
@@ -270,7 +329,6 @@
             border-top: 1px solid rgba(0,0,0,0.3);
             padding: 5%;
             padding-left: 0;
-            z-index: 997;
             cursor: pointer;
         }
         .info .img-wrapper,.article-wrapper,.date {
@@ -313,7 +371,6 @@
           color: rgb(121,172,68);
           background-color: white;
           font-family: 'Roboto', sans-serif;
-          z-index: 998;
         }
 
         /*notice csss*/
@@ -342,7 +399,6 @@
           height: 100%;
           background-color: rgba(0,0,0,0.3);
           box-shadow: 0 0 3px rgba(0,0,0,0.5);
-          z-index: 998;
           position: absolute;
           left: 10%;
           top: 0;
@@ -447,6 +503,14 @@
 			}).fail(function() {
 				console.log("failed!");
 			});
+
+      $("#explore").click(function(){
+        $("html").load("explore.html")
+      });
+
+
+
+
 		});
         
         </script>
@@ -459,27 +523,38 @@
                 <button class="material-design-hamburger__icon">
                   <span class="material-design-hamburger__layer"></span>
                 </button>
-                <div>散步去</div>
+                <div class="menu-stat"><h3>散步去</h3></div>
+                <div class="menu-search">
+                  <img src="http://i.imgur.com/WRVlCKn.png">
+                </div>
               </section>
 
               <section class="menu menu--off">
-                <div>好友聊天</div>
-                <div>附近資原</div>
-                <div>我的紀錄</div>
-                <div>管理</div>
+                <div class="menu-header">
+                  <div class="menu-img-wrapper">
+                  </div>
+                  <div class="menu-name-wrapper">
+                    <p>OOO</p>
+                  </div>
+                </div>
+                <div id="walk">散步去</div>
+                <div id="talk">聊聊天</div>
+                <div id="explore">探索周邊</div>
+                <div id="">散步紀錄</div>
+                <div id="">帳戶管理</div>
+                <div id="#">關於我們</div>
               </section>
-              
             </section>
-            <div class="btn-block-wrapper">
-                <img src="http://placehold.it/180x70" class="icon-1">
-                <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
+            <div id="replace-area">
+              <div class="btn-block-wrapper">
+                  <img src="http://i.imgur.com/LVZPECT.png" class="icon-1">
+                  <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
+              </div>
+  			       <!-- list of friends -->
+              <div class="social-info-wrapper" />
+  			       <!-- Modal -->
+  			       <div class="social-info-modal-wrapper" />
             </div>
-
-			<!-- list of friends -->
-            <div class="social-info-wrapper" />
-
-			<!-- Modal -->
-			<div class="social-info-modal-wrapper" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
