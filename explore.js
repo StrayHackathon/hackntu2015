@@ -87,6 +87,10 @@ function loadHospitals(callback) {
 // load data of parks in the city
 function loadParks(callback) {
 	getJSON("data/parks.json", function(data) {
+		for(var i = 0; i < data.length; ++i) {
+			var item = data[i];
+			item.pos = {lat: parseFloat(item.GTag_latitude), lng: parseFloat(item.GTag_longitude)};
+		}
 		parks = data;
 		callback();
 	});
@@ -132,9 +136,14 @@ function markHospitals() {
 
 function markParks() {
 	if(parks) {
+		current_marks = []
 		for(var i = 0; i < parks.length; ++i) {
 			var item = parks[i];
-			
+			var marker = new google.maps.Marker({
+				position: item.pos,
+				map: window.map
+			});
+			current_marks.push(marker);
 		}
 	}
 	else {
