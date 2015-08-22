@@ -5,7 +5,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
@@ -24,8 +24,6 @@
         <!-- font awesome CDN -->
 
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <!-- font
- -->
         <style>
         @font-face {
           font-family: 'cwTeXHei';
@@ -44,7 +42,6 @@
           width: 100%;
           height: 100%;
           font-family: 'cwTeXHei', serif;
-          background-color: rgb(224,232,155);
         }
         .wrapper {
             width: 100%;
@@ -60,6 +57,7 @@
           height: 100%;
           transition: all 300ms ease-in-out;  
           padding: 0;
+          background-color: rgb(224,232,155);
         }
         .menu {
           font-size:2em;
@@ -284,95 +282,6 @@
           }
         }
 
-        /*btn-block*/
-        .btn-block-wrapper {
-            width: 100%;
-            text-align: center;
-            padding-top: 1em;
-        }
-        .start-walk-btn {
-            border: none;
-            margin: 0 auto;
-            text-align: center;
-            border-radius: 3px;
-            background-color: rgb(190,214,47);
-            width: 50%;
-            padding: 4%;
-            padding-left: 6%;
-            padding-right: 6%;
-            width: auto;
-            color: white;
-            font-size: 1.2.em;
-            box-shadow: 0px 0px 1px rgba(0,0,0,0.1);
-        }
-        .icon-1 {
-          width: 180px;
-          height: 70px;
-          margin-top: 5em; 
-        }
-        .icon-1, .start-walk-btn {
-            display: block;
-            margin: 0 auto;
-            border-radius: 1px;
-            margin-bottom: 3%;
-        }
-
-        /*Social info*/
-        .social-info-wrapper {
-          margin-top: 2%;
-          background-color: white;
-        }
-        .info {
-            height: 80px;
-            width: 100%;
-            box-shadow: 0 0 1px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(0,0,0,0.3);
-            padding: 5%;
-            padding-left: 0;
-            cursor: pointer;
-        }
-        .info .img-wrapper,.article-wrapper,.date {
-            display: inline-block;
-            vertical-align: top;
-            float: right;
-        }
-        .info img {
-          margin-right: 3%;
-        }
-        .info article {
-          margin-right: 1%;
-        }
-        .info .article-wrapper {
-          width: 60%;
-        }
-        .info .img-wrapper {
-          width: 25%;
-          text-align: center;
-        }
-        .info img {
-            border-radius: 50%;
-            height: 3em;
-            margin: 0 auto;
-        }
-        .info i {
-          margin-top: 2%;
-          float: right;
-          margin-right: -1%;
-          cursor: pointer;
-        }
-        .info span {
-          float: right;
-          color: gray;
-          font-size: 0.7em;
-        }
-        .date {
-          width: 9%;
-          text-align: center;
-          color: rgb(121,172,68);
-          background-color: white;
-          font-family: 'Roboto', sans-serif;
-        }
-
         /*notice csss*/
         .notice-wrapper {
           position: fixed;
@@ -390,126 +299,47 @@
           box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
         }
 
-        /*Modal css*/
-        .modal {
-          width: 100%;
-          margin: 0 auto;
-          border-radius: 0;
-          text-align: center;
+        /*Messenger css*/
+        .mess {
+            padding-top: 4%;
+            padding-bottom: 4%;
+            font-family: 'cwTeXHei', serif;
+            border-bottom: 1px solid rgba(20,20,20,0.5);
+            box-shadow: 0 0 2px rgba(20,20,20,0.5);
         }
-        .modal-dialog {
-          border-radius: 0;
+        .mess-img-wrapper, .mess-cont-wrapper, .mess-date-wrapper {
+            display: inline-block;
+            vertical-align: top;
         }
-        .modal-content {
-          width: 20em;
-          border-radius: 0;
-          text-align: center;
-          margin: 0 auto;
+        .mess-img-wrapper {
+            width: 20%;
+            text-align: center;
+            padding-top: 3%;
         }
-        .modal-header {
-          width: 100%;
-          text-align: center;
-          border-radius: 0;
-          background-color: rgb(190,214,47);
-          color: white;
+        .mess-cont-wrapper {
+            width: 65%;
         }
-        .modal-img {
-          border-radius: 50%;
-          width: 5em;
-          height: 5em;
-          box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        .mess-date-wrapper {
+            width: 13%;
+            text-align: center;
+            padding-top: 3%;
+            color: rgba(20,20,20,0.4);
         }
-        #map {
-          margin-top: 1em;
-          margin-bottom: 1em;
-        }
-        .modal-info {
-          padding-right: 4%;
-          padding-left: 4%;
-          color: gray;
-          font-size: 0.9em;
-        }
-        .modal-inviate {
-          margin-top: 4em;
-          margin-bottom: 10px;
-        }
-        .modal-inviate a {
-          color: rgb(190,214,47);
-        }
-        .modal-inviate a:hover {
-          color: rgb(190,214,47);
+        .mess-img-wrapper img {
+            width: 3em;
+            height: 3em;
+            margin: 0 auto;
         }
         </style>
-        
-        <script type="text/javascript">
-        
-		$(document).ready(function() {
-			$.getJSON("data/friends.json", function(data) {
-				var social_info_wrapper = $(".social-info-wrapper");
-				var social_info_modal_wrapper = $(".social-info-modal-wrapper");
-				for(var i = 0; i < data.length; ++i) {
-					var item = data[i];
-					var content = [
-						'<div class="info social-info-', i, '" data-toggle="modal" data-target=".info-', i, '">',
-						'<div class="article-wrapper"><article>',
-							'<strong>', item.name, '</strong><span>', item.owner, '</span> <br>',
-							item.desc, '</article></div>',
-						'<div class="img-wrapper"><img src="http://i.imgur.com/uKmkbGi.png"></div>',
-						'<div class="date">', item.time, '</div></div>'].join('');
-					social_info_wrapper.append(content);
-
-					content = [
-					'<div class="modal fade info-', i ,' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">',
-					  '<div class="modal-dialog modal-sm">',
-						'<div class="modal-content">',
-						  '<div class="modal-header">',
-							'<img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">',
-							'<h3 class="modal-h">',
-							  item.name  ,'<br>',
-							  '<small>', item.owner, '</small>',
-							'</h3>',
-						  '</div>',
-						  '<div class="modal-info">',
-							'<div id="map">',
-							  '<img src="http://placehold.it/250x80">',
-							'</div>',
-							'<div class="modal-info-dec">',
-								item.detail,
-							'</div>',
-						  '</div>',
-						  '<div class="modal-inviate">',
-							'<a href="#">邀請一起跑跑</a>',
-						  '</div>',
-						'</div> <!-- don -->',
-					  '</div> <!-- don -->',
-					'</div> <!-- don -->'
-					].join("");
-					social_info_modal_wrapper.append(content);
-				}
-			}).fail(function() {
-				console.log("failed!");
-			});
-
-      // $("").click(function(){
-      //   $("").load("")
-      // });
-
-		});
-        
-        </script>
-        
     </head>
     <body>
         <div class="wrapper">
-            <div class="notice-wrapper">
-              <img src="http://i.imgur.com/GIr47Fb.png" class="notice-icon">
-            </div>
             <section class="ham-wrapper">
               <section class="material-design-hamburger">
                 <button class="material-design-hamburger__icon">
                   <span class="material-design-hamburger__layer"></span>
                 </button>
-                <div class="menu-stat"><h3>散步去</h3></div>
+                <div class="menu-stat"><h3>聊聊天</h3></div>
                 <div class="menu-search">
                   <img src="http://i.imgur.com/WRVlCKn.png">
                 </div>
@@ -531,17 +361,112 @@
                 <div id="#">關於我們</div>
               </section>
             </section>
-            <div id="replace-area">
-              <div class="btn-block-wrapper">
-                  <img src="http://i.imgur.com/LVZPECT.png" class="icon-1">
-                  <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
-              </div>
-  			       <!-- list of friends -->
-              <div class="social-info-wrapper" />
-  			       <!-- Modal -->
-  			       <div class="social-info-modal-wrapper" />
+
+            <div class="notice-wrapper">
+              <img src="http://i.imgur.com/GIr47Fb.png" class="notice-icon">
             </div>
 
+            <div class="messenge-wrapper">
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            小羊的爸<br>
+                            好的，我們約在大安森林公園集合。另外順便幫我帶..
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+                <div class="mess">
+                    <div class="mess-img-wrapper">
+                        <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="mess-cont-wrapper">
+                        <p>
+                            胖胖的媽媽<br>
+                            美蕙，今天晚上要跟我們家的胖胖一起散步嗎?
+                        </p>
+                    </div>
+                    <div class="mess-date-wrapper">
+                        <small><p>6:15<br>pm</p></small>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
@@ -555,34 +480,6 @@
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-
-        <script>//menu toggle
-        (function() {
-
-          'use strict';
-
-          document.querySelector('.material-design-hamburger__icon').addEventListener(
-            'click',
-            function() {      
-              var child;
-              
-              document.body.classList.toggle('background--blur');
-              this.parentNode.nextElementSibling.classList.toggle('menu--on');
-
-              child = this.childNodes[1].classList;
-
-              if (child.contains('material-design-hamburger__icon--to-arrow')) {
-                child.remove('material-design-hamburger__icon--to-arrow');
-                child.add('material-design-hamburger__icon--from-arrow');
-              } else {
-                child.remove('material-design-hamburger__icon--from-arrow');
-                child.add('material-design-hamburger__icon--to-arrow');
-              }
-
-            });
-
-        })();
         </script>
     </body>
 </html>
