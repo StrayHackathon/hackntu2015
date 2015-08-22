@@ -1,4 +1,4 @@
-hospitals = [
+var hospitals = [
 {
 	name: "aaa",
 	address: "台北市辛亥路二段157號"
@@ -20,6 +20,10 @@ hospitals = [
 	address: "高雄市凱旋三路1號"
 }
 ];
+
+var parks = [];
+var restaurants = [];
+var friends = [];
 
 // center the map on current location of the user
 function centerOnCurrentLocation(map) {

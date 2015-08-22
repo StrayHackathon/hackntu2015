@@ -17,16 +17,21 @@
     <script  type="text/javascript" src="jquery-1.11.3.min.js"></script>
     <script  type="text/javascript" src="explore.js"></script>
     <script type="text/javascript">
+		var btns = {
+			"#hospitals" : hospitals,
+			"#parks": parks,
+			"#restaurants": restaurants,
+			"#friends" : friends
+		};
+
+		function onMarkBtnClicked() {
+			var id = "#" + $(this).attr("id");
+			markSites(window.map, btns[id]);
+		}
+
 		$( document ).ready(function() {
-			var btns = new Array("#hospital");
-			for(var i = 0; i < btns.length; ++i) {
-				$(btns[i]).on("click", function() {
-					switch($(this).attr("id")) {
-						case "hospital":
-						  markSites(window.map, hospitals);
-						  break;
-					}
-				});
+			for(var id in btns) {
+				$(id).on("click", onMarkBtnClicked);
 			}
 
 			$("#move_to").on("click", function() {
@@ -41,9 +46,13 @@
     </script>
   </head>
   <body>
-	  <button id="hospital">醫院</button>
-	  <button id="park">公園</button>
-	  <input id="address" type="address" />
+	  尋找：
+	  <button id="hospitals">醫院</button>
+	  <button id="parks">公園</button>
+	  <button id="restaurants">寵物餐廳</button>
+	  <button id="friends">朋友</button>
+	  <br />
+	  <input id="address" />
 	  <button id="move_to">移到</button>
 	  <button id="current_location">目前位置</button>
     <div id="map"></div>
