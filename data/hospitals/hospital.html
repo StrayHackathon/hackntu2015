@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta hottp-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta charset="utf-8">
+    <script  type="text/javascript" src="../jquery-1.11.3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&sensor=true"></script>
+	<script type="text/javascript" src="../explore.js"></script>
+
+	<script type="text/javascript">
+		var items = null;
+		function convert() {
+			$.getJSON("hospitals_src.json", function(data) {
+				items = data;
+				setTimeout(onTimeout, 0);
+			});
+		}
+
+		var wait = 2000;
+		function onTimeout() {
+			var item = items.shift();
+			console.log("len:" + items.length + ", " + item);
+
+			var gc = new google.maps.Geocoder();
+			gc.geocode({address: item["機構地址"]}, function(results, status) {
+				if(status == google.maps.GeocoderStatus.OK) {
+					var pt = results[0].geometry.location;
+					item["pos"] = ({lat: pt.lat(), lng: pt.lng()});
+
+					$("#result").append(JSON.stringify(item) + ",\n");
+					if(items.length > 0) {
+						setTimeout(onTimeout, wait);
+					}
+				}
+			});
+		}
+
+	</script>
+</head>
+
+<body onload="convert();">
+	<pre id="result" />
+</body>
+
+</html>
