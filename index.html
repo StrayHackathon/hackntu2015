@@ -1,0 +1,728 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <!-- Boostrap CDN -->
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- font awesome CDN -->
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <!-- font
+ -->
+        <style>
+        @font-face {
+          font-family: 'cwTeXHei';
+          font-style: normal;
+          font-weight: 500;
+          src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot);
+          src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot?#iefix) format('embedded-opentype'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff2) format('woff2'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff) format('woff'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.ttf) format('truetype');
+        }
+        * {
+             box-sizing: border-box;
+        }
+        body {
+          width: 100%;
+          height: 100%;
+          font-family: 'cwTeXHei', serif;
+          background-color: rgb(224,232,155);
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*Hamburger*/
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+
+        .ham-wrapper {
+          height: 100%;
+          transition: all 300ms ease-in-out;  
+          margin: 1em 0;
+          padding: 0;
+        }
+        .menu {
+          font-size:2em;
+          font-family: 'Roboto', sans-serif;
+          color: #333;
+        }
+
+        .menu div {
+          margin: 1em;
+          padding-bottom: 1em;
+          border-bottom: 1px solid #ccc;
+        }
+        .menu a {
+          text-decoration: none;
+          color: #3367d6;
+        }
+        .menu a:hover {
+          text-decoration: underline;
+        }
+        .menu div {
+          cursor: pointer;
+          display: block;
+        }
+        .menu div:last-child {
+          border: 0;
+        }
+        .menu--off {
+          position: absolute;
+          left: -80%;
+          width: 50%;
+          display: block;
+          background: #eee;
+          min-height: 600px;
+          height: 125%;
+          width: 80%;
+          transition: all 300ms;
+          font-size: 1em;
+        }
+        .menu--on {
+          left: 0;
+          box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.2);
+          transition: all 300ms;
+          font-family: 'cwTeXHei', serif;
+        }
+        .material-design-hamburger button {
+          display: block;
+          border: none;
+          background: none;
+          outline: 0;
+        }
+        .material-design-hamburger button,div {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .material-design-hamburger div {
+          font-family: 'cwTeXHei', serif;
+          font-size: 1.2em;
+          margin-left: 1em;
+        }
+        .icon-link:hover {
+          text-decoration: none;
+        }
+        .material-design-hamburger__icon {
+          padding: 0;
+          padding-left: 1em;
+          cursor: pointer;
+          height: 3em;
+        }
+
+        .material-design-hamburger__layer {
+          display: block;
+          width: 30px;
+          height: 4px;
+          background: black;
+          position: relative;
+          animation-duration: 300ms;
+          animation-timing-function: ease-in-out;
+        }
+
+        .material-design-hamburger__layer:before, .material-design-hamburger__layer:after {
+          display: block;
+          width: inherit;
+          height: 4px;
+          position: absolute;
+          background: inherit;
+          left: 0;
+          content: '';
+          animation-duration: 300ms;
+          animation-timing-function: ease-in-out;
+        }
+        .material-design-hamburger__layer:before {
+          bottom: 200%;
+        }
+        .material-design-hamburger__layer:after {
+          top: 200%;
+        }
+        .material-design-hamburger__icon--to-arrow {
+          animation-name: material-design-hamburger__icon--slide;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--to-arrow:before {
+          animation-name: material-design-hamburger__icon--slide-before;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--to-arrow:after {
+          animation-name: material-design-hamburger__icon--slide-after;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--from-arrow {
+          animation-name: material-design-hamburger__icon--slide-from;
+        }
+        .material-design-hamburger__icon--from-arrow:before {
+          animation-name: material-design-hamburger__icon--slide-before-from;
+        }
+        .material-design-hamburger__icon--from-arrow:after {
+          animation-name: material-design-hamburger__icon--slide-after-from;
+        }
+        @keyframes material-design-hamburger__icon--slide {
+          0% {
+          }
+          100% {
+            transform: rotate(180deg);
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-before {
+          0% {
+          }
+          100% {
+            transform: rotate(45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-after {
+          0% {
+          }
+          100% {
+            transform: rotate(-45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-from {
+          0% {
+            transform: rotate(-180deg);
+          }
+          100% {
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-before-from {
+          0% {
+            transform: rotate(45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+          100% {
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-after-from {
+          0% {
+            transform: rotate(-45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+          100% {
+          }
+        }
+
+
+        /*btn-block*/
+        .btn-block-wrapper {
+            width: 100%;
+            text-align: center;
+            padding: 2%;
+        }
+        .start-walk-btn {
+            border: none;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 3px;
+            background-color: rgb(190,214,47);
+            width: 50%;
+            padding: 4%;
+            padding-left: 6%;
+            padding-right: 6%;
+            width: auto;
+            color: white;
+            font-size: 1.2.em;
+            box-shadow: 0px 0px 1px rgba(0,0,0,0.1);
+        }
+        .icon-1, .start-walk-btn {
+            display: block;
+            margin: 0 auto;
+            border-radius: 1px;
+            margin-bottom: 3%;
+        }
+
+        /*Social info*/
+        .social-info-wrapper {
+          margin-top: 2%;
+          background-color: white;
+        }
+        .info {
+            height: 80px;
+            width: 100%;
+            box-shadow: 0 0 1px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(0,0,0,0.3);
+            padding: 5%;
+            padding-left: 0;
+            z-index: 997;
+            cursor: pointer;
+        }
+        .info .img-wrapper,.article-wrapper,.date {
+            display: inline-block;
+            vertical-align: top;
+            float: right;
+        }
+        .info img {
+          margin-right: 3%;
+        }
+        .info article {
+          margin-right: 1%;
+        }
+        .info .article-wrapper {
+          width: 60%;
+        }
+        .info .img-wrapper {
+          width: 25%;
+          text-align: center;
+        }
+        .info img {
+            border-radius: 50%;
+            height: 3em;
+            margin: 0 auto;
+        }
+        .info i {
+          margin-top: 2%;
+          float: right;
+          margin-right: -1%;
+          cursor: pointer;
+        }
+        .info span {
+          float: right;
+          color: gray;
+          font-size: 0.7em;
+        }
+        .date {
+          width: 9%;
+          text-align: center;
+          color: rgb(121,172,68);
+          background-color: white;
+          font-family: 'Roboto', sans-serif;
+          z-index: 998;
+        }
+
+        /*notice csss*/
+        .notice-wrapper {
+          position: fixed;
+          height: auto;
+          bottom: 2%;
+          right: 4%;
+          background-color: rgb(254,230,94);
+          border-radius: 50%;
+        }
+        .notice-icon {
+          width: 3em;
+          height: 3em;
+          border-radius: 50%;
+          border: none;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+        }
+
+        /*vr css*/
+        .vertical-line-wrapper {
+          height: 100%;
+        }
+        .vertical-line {
+          width: 1px;
+          height: 100%;
+          background-color: rgba(0,0,0,0.3);
+          box-shadow: 0 0 3px rgba(0,0,0,0.5);
+          z-index: 998;
+          position: absolute;
+          left: 10%;
+          top: 0;
+        }
+
+        /*Modal css*/
+        .modal {
+          width: 100%;
+          margin: 0 auto;
+          border-radius: 0;
+          text-align: center;
+        }
+        .modal-dialog {
+          border-radius: 0;
+        }
+        .modal-content {
+          width: 20em;
+          border-radius: 0;
+          text-align: center;
+          margin: 0 auto;
+        }
+        .modal-header {
+          width: 100%;
+          text-align: center;
+          border-radius: 0;
+          background-color: rgb(190,214,47);
+          color: white;
+        }
+        .modal-img {
+          border-radius: 50%;
+          width: 5em;
+          height: 5em;
+          box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        }
+        #map {
+          margin-top: 1em;
+          margin-bottom: 1em;
+        }
+        .modal-info {
+          padding-right: 4%;
+          padding-left: 4%;
+          color: gray;
+          font-size: 0.9em;
+        }
+        .modal-inviate {
+          margin-top: 4em;
+          margin-bottom: 10px;
+        }
+        .modal-inviate a {
+          color: rgb(190,214,47);
+        }
+        .modal-inviate a:hover {
+          color: rgb(190,214,47);
+        }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <section class="ham-wrapper">
+              <section class="material-design-hamburger">
+                <button class="material-design-hamburger__icon">
+                  <span class="material-design-hamburger__layer"></span>
+                </button>
+                <div>散步去</div>
+              </section>
+
+              <section class="menu menu--off">
+                <div>好友聊天</div>
+                <div>附近資原</div>
+                <div>我的紀錄</div>
+                <div>管理</div>
+              </section>
+              
+            </section>
+            <div class="btn-block-wrapper">
+                <img src="http://placehold.it/180x70" class="icon-1">
+                <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
+            </div>
+            <div class="social-info-wrapper">
+                <div class="info social-info-one" data-toggle="modal" data-target=".info-one">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>胖胖</strong><span>王小明</span> <br>
+                          親人、有時過動、可能會爆衝
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:00<br>
+                      am
+                    </div>
+                </div>
+                <div class="info social-info-two" data-toggle="modal" data-target=".info-two">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>JUJU</strong><span>陳小明</span> <br>
+                          大型狗勿來!!
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:30<br>
+                      am
+                    </div>
+                </div>
+                <div class="info social-info-three" data-toggle="modal" data-target=".info-three">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>蹦蹦</strong><span>菜小明</span> <br>
+                          揪晚上一起遛狗
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:45<br>
+                      am
+                    </div>
+                </div>
+                <div class="info social-info-four" data-toggle="modal" data-target=".info-four">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>阿福</strong><span>賴小明</span> <br>
+                          尋找也愛柴柴的你
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:45<br>
+                      am
+                    </div>
+                </div>
+                <div class="info social-info-five" data-toggle="modal" data-target=".info-five">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>小黑</strong><span>林小明</span> <br>
+                          台灣土狗就是讚!
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:45<br>
+                      am
+                    </div>
+                </div>
+                <div class="info social-info-six" data-toggle="modal" data-target=".info-six">
+                    <div class="article-wrapper">
+                      <article>
+                          <strong>妙妙</strong><span>王妙妙</span> <br>
+                          狗狗是人類最好的朋友
+                      </article>
+                    </div>
+                    <div class="img-wrapper">
+                      <img src="http://i.imgur.com/uKmkbGi.png">
+                    </div>
+                    <div class="date">
+                      6:45<br>
+                      am
+                    </div>
+                </div>
+                <!-- <div class="vertcal-line-wrapper"><div class="vertical-line"></div></div> -->
+                <div class="notice-wrapper">
+                  <img src="" class="notice-icon">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade info-one" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        <div class="modal fade info-two" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        <div class="modal fade info-three" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#http://i.imgur.com/uKmkbGi.png">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        <div class="modal fade info-four" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#http://i.imgur.com/uKmkbGi.png">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        <div class="modal fade info-five" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        <div class="modal fade info-six" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
+                <h3 class="modal-h">
+                  胖胖<br>
+                  <small>王曉明</small>
+                </h3>
+              </div>
+              <div class="modal-info">
+                <div id="map">
+                  <img src="http://placehold.it/250x80">
+                </div>
+                <div class="modal-info-dec">
+                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
+                </div>
+              </div>
+              <div class="modal-inviate">
+                <a href="#">邀請一起跑跑</a>
+              </div>
+            </div> <!-- don -->
+          </div> <!-- don -->
+        </div> <!-- don -->
+
+        
+
+
+
+
+
+
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+
+        <script>//menu toggle
+        (function() {
+
+          'use strict';
+
+          document.querySelector('.material-design-hamburger__icon').addEventListener(
+            'click',
+            function() {      
+              var child;
+              
+              document.body.classList.toggle('background--blur');
+              this.parentNode.nextElementSibling.classList.toggle('menu--on');
+
+              child = this.childNodes[1].classList;
+
+              if (child.contains('material-design-hamburger__icon--to-arrow')) {
+                child.remove('material-design-hamburger__icon--to-arrow');
+                child.add('material-design-hamburger__icon--from-arrow');
+              } else {
+                child.remove('material-design-hamburger__icon--from-arrow');
+                child.add('material-design-hamburger__icon--to-arrow');
+              }
+
+            });
+
+        })();
+        </script>
+    </body>
+</html>
