@@ -1,29 +1,11 @@
-var hospitals = [
-{
-	name: "aaa",
-	address: "台北市辛亥路二段157號"
-},
-{
-	name: "bbb",
-	address: "台北市辛亥路二段300號"
-},
-{
-	name: "ccc",
-	address: "台北市辛亥路一段20號"
-},
-{
-	name: "ddd",
-	address: "台北市汀州路三段100號"
-},
-{
-	name: "eee",
-	address: "高雄市凱旋三路1號"
-}
-];
+var hospitals = null;
+var hospitals_loaded = false;
 
-var parks = [];
-var restaurants = [];
-var friends = [];
+var parks = null;
+var parks_loaded = false;
+
+var restaurants = null;
+var restaurants_loaded = false;
 
 // convert TWD97 coordinates to LatLng used by Google Map
 // http://kuro.tw/posts/2015/06/11/js-note-twd97-convert-to-longitude-and-latitude
@@ -77,25 +59,99 @@ function twd97_to_latlng($x, $y) {
   };
 }
 
+function getJSON(url, callback) {
+	$.ajax({
+		dataType: "json",
+		url: url,
+		mimeType: "application/json",
+		success: callback
+	});
+}
+
 // load data of hospitals
-function loadHospitals() {
-	$.getJSON("data/hospitals.json", function(data) {
+function loadHospitals(callback) {
+	getJSON("data/hospitals.json", function(data) {
 		// the "pos" in the hospitals are in TWD97 format
 		for(var i = 0; i < data.length; ++i) {
 			var h = data[i];
 			if(h.pos) {
 				h.pos = twd97_to_latlng(h.pos[0], h.pos[1]);
-				console.log(h.pos);
+				// console.log(h.pos);
 			}
 		}
+		hospitals = data;
+		callback();
 	});
 }
 
 // load data of parks in the city
-function loadParks() {
-	$.getJSON("data/parks.json", function(data) {
-		
+function loadParks(callback) {
+	getJSON("data/parks.json", function(data) {
+		parks = data;
+		callback();
 	});
+}
+
+// load data of restaurants in the city
+function loadRestaurants(callback) {
+	getJSON("data/restaurants.json", function(data) {
+		restaurants = data;
+		callback();
+	});
+}
+
+var current_marks = null;
+
+function clearMarks() {
+	var map = window.map;
+	if(current_marks) {
+		for(var i = 0; i < current_marks.length; ++i) {
+			var mark = current_marks[i];
+			mark.setMap(null);
+		}
+		current_marks = null;
+	}
+}
+
+function markHospitals() {
+	if(hospitals) {
+		current_marks = []
+		for(var i = 0; i < hospitals.length; ++i) {
+			var item = hospitals[i];
+			var marker = new google.maps.Marker({
+				position: item.pos,
+				map: window.map
+			});
+			current_marks.push(marker);
+		}
+	}
+	else {
+		loadHospitals(markHospitals);
+	}
+}
+
+function markParks() {
+	if(parks) {
+		for(var i = 0; i < parks.length; ++i) {
+			var item = parks[i];
+			
+		}
+	}
+	else {
+		loadParks(markParks);
+	}
+}
+
+function markRestaurants() {
+	if(restaurants) {
+		for(var i = 0; i < restaurants.length; ++i) {
+			var item = restaurants[i];
+			
+		}
+	}
+	else {
+		loadRestaurants(markRestaurants);
+	}
 }
 
 // center the map on current location of the user
@@ -120,16 +176,6 @@ function initMap() {
 	});
 	centerOnCurrentLocation(map);
 	window.map = map;
-
-/*	
-	$.ajax({
-		url: "data/hospitals_src.json",
-		success: function(data, status) {
-			alert(data.length);
-		},
-		dataType: "json"
-	});
-*/
 }
 
 // query GeoCode of the specified address and call callback() after it's finished.
