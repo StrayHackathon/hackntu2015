@@ -318,18 +318,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&sensor=true"></script>
         <script  type="text/javascript" src="explore.js"></script>
         <script type="text/javascript">
-            var btns = {
-                "#hospitals" : hospitals,
-                "#parks": parks,
-                "#restaurants": restaurants,
-                "#friends" : friends
-            };
-
-            function onMarkBtnClicked() {
-                var id = "#" + $(this).attr("id");
-                markSites(window.map, btns[id]);
-            }
-
             var tracking = false;
             var shown_path = null;
 
@@ -353,9 +341,18 @@
             }
 
             $( document ).ready(function() {
-                for(var id in btns) {
-                    $(id).on("click", onMarkBtnClicked);
-                }
+				$("#hospitals").on("click", function() {
+					clearMarks();
+					markHospitals();
+				});
+				$("#parks").on("click", function() {
+					clearMarks();
+					markParks();
+				});
+				$("#restaurants").on("click", function() {
+					clearMarks();
+					markRestaurants();
+				});
 
                 $("#move_to").on("click", function() {
                     moveToAddress(window.map, $("#address").val());
