@@ -96,7 +96,7 @@ var tracking_id = -1;
 function locationChanged(pos) {
 	var crd = pos.coords;
 	// FIXME: store current time
-	tracked_path.push(crd);
+	tracked_path.push({lat: crd.latitude, lng: crd.longitude});
 }
 
 function trackingError(err) {
@@ -126,6 +126,18 @@ function stopTrackingPath() {
 			navigator.geolocation.clearWatch(tracking_id);
 			tracking_id = -1;
 		}
+		// var crd = tracked_path[tracked_path.length - 1];
+		// tracked_path.push({lat: crd.lat + 1.0, lng: crd.lng + 1.0});
 	}
 	return tracked_path;
+}
+
+function createPath(_path) {
+	drawPath = new google.maps.Polyline({
+		path: _path,
+		strokeColor: "#FF0000",
+		strokeOpacity: 1.0,
+		strokeWeight: 8
+	});
+	return drawPath;
 }
