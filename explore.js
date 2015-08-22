@@ -89,3 +89,43 @@ function markSites(map, sites) {
 		markAddress(map, site.address);
 	}
 }
+
+var tracked_path = null;
+var tracking_id = -1;
+
+function locationChanged(pos) {
+	var crd = pos.coords;
+	// FIXME: store current time
+	tracked_path.push(crd);
+}
+
+function trackingError(err) {
+	console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+
+function startTrackingPath() {
+	if(tracking_id == -1) {
+		if( navigator.geolocation) {
+			var options = {
+			  enableHighAccuracy: true,
+			  timeout: 5000,
+			  maximumAge: 0
+			};
+			tracking_id = navigator.geolocation.watchPosition(locationChanged, trackingError, options);
+			tracked_path = new Array();
+		}
+		else {
+			alert("your browser is not supported.");
+		}
+	}
+}
+
+function stopTrackingPath() {
+	if( navigator.geolocation) {
+		if(tracking_id != -1) {
+			navigator.geolocation.clearWatch(tracking_id);
+			tracking_id = -1;
+		}
+	}
+	return tracked_path;
+}

@@ -29,6 +29,26 @@
 			markSites(window.map, btns[id]);
 		}
 
+		var tracking = false;
+		function onTrackPathClicked() {
+			if(false == tracking) {
+				startTrackingPath();
+				tracking = true;
+				$(this).text("結束紀錄");
+			}
+			else {
+				path = stopTrackingPath();
+				tracking = false;
+				$(this).text("紀錄路徑");
+				path_str = "";
+				for(var i = 0; i < path.length; ++i) {
+					crd = path[i];
+					path_str += "{" + crd.latitude + ", " + crd.longitude + "}, ";
+				}
+				alert(path_str);
+			}
+		}
+
 		$( document ).ready(function() {
 			for(var id in btns) {
 				$(id).on("click", onMarkBtnClicked);
@@ -41,6 +61,8 @@
 			$("#current_location").on("click", function() {
 				centerOnCurrentLocation(window.map);
 			});
+
+			$("#track_path").on("click", onTrackPathClicked);
 
 		});
     </script>
@@ -55,6 +77,7 @@
 	  <input id="address" />
 	  <button id="move_to">移到</button>
 	  <button id="current_location">目前位置</button>
+	  <button id="track_path">紀錄路徑</button>
     <div id="map"></div>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&callback=initMap"></script>
