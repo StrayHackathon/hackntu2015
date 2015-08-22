@@ -1,0 +1,479 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <!-- Boostrap CDN -->
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- font awesome CDN -->
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <style>
+        @font-face {
+          font-family: 'cwTeXHei';
+          font-style: normal;
+          font-weight: 500;
+          src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot);
+          src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot?#iefix) format('embedded-opentype'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff2) format('woff2'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff) format('woff'),
+               url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.ttf) format('truetype');
+        }
+        * {
+             box-sizing: border-box;
+        }
+        body {
+          width: 100%;
+          height: 100%;
+          font-family: 'cwTeXHei', serif;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*Hamburger*/
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+
+        .ham-wrapper {
+          height: 100%;
+          transition: all 300ms ease-in-out;  
+          padding: 0;
+          background-color: rgb(224,232,155);
+        }
+        .menu {
+          font-size:2em;
+          font-family: 'Roboto', sans-serif;
+          color: #333;
+          padding: 0;
+          margin: 0;
+        }
+        .menu-header {
+          height: 16em;
+          width: 100%;
+          background: rgb(190,214,47);
+          padding: 0;
+          margin: 0;
+          left: -14px;
+          position: relative;
+        }
+        .menu div {
+          margin: 1em;
+          padding-bottom: 1em;
+          border-bottom: 1px solid #ccc;
+        }
+        .menu a {
+          text-decoration: none;
+          color: #3367d6;
+        }
+        .menu a:hover {
+          text-decoration: underline;
+        }
+        .menu div {
+          cursor: pointer;
+          display: block;
+        }
+        .menu div:last-child {
+          border: 0;
+        }
+        .menu--off {
+          position: absolute;
+          left: -80%;
+          width: 50%;
+          display: block;
+          background: #eee;
+          min-height: 600px;
+          height: 125%;
+          width: 80%;
+          transition: all 300ms;
+          font-size: 1em;
+          padding: 0;
+          margin: 0;
+        }
+        .menu--on {
+          position: absolute;
+          height: 100%;
+          top: -1em;
+          left: 0;
+          box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.2);
+          transition: all 300ms;
+          font-family: 'cwTeXHei', serif;
+          padding: 0;
+          margin: 0;
+        }
+        .menu-img-wrapper {
+          width: 5em;
+          height: 5em;
+          border-radius: 50%;
+          box-shadow: 0 0 5px rgba(20,20,20,0.5);
+          background-color: gray;
+          position: relative;
+          top: 5em;
+        }
+        .menu-name-wrapper {
+          color: white;
+          font-weight: bold;
+          position: relative;
+          left: 1em;
+          top: 8em;
+        }
+        .material-design-hamburger button {
+          display: block;
+          border: none;
+          background: none;
+          outline: 0;
+        }
+        .material-design-hamburger button,div {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .material-design-hamburger div {
+          font-family: 'cwTeXHei', serif;
+          font-size: 1.2em;
+          margin-left: 1em;
+        }
+        .icon-link:hover {
+          text-decoration: none;
+        }
+        .material-design-hamburger__icon {
+          position: absolute;
+          padding: 0;
+          padding-left: 1em;
+          cursor: pointer;
+          height: 3em;
+          z-index: 999;
+        }
+        .material-design-hamburger__layer, .menu-stat, .menu-search {
+          display: inline-block;
+          vertical-align: bottom;
+        }
+        .menu-stat {
+          color: white;
+          position: relative;
+          left: 3em;
+          top: -0.66em;
+          font-weight: bold;
+        }
+        .menu-search {
+          position: relative;
+          float: right;
+          right: 1.5em;
+          top: 0.2em;
+        }
+        .menu-search img {
+          width: 1.8em;
+          height: 1.8em;
+        }
+        .material-design-hamburger__layer {
+          display: block;
+          width: 30px;
+          height: 3px;
+          background: black;
+          position: relative;
+          background-color: white;
+          animation-duration: 300ms;
+          animation-timing-function: ease-in-out;
+        }
+        .material-design-hamburger__layer:before, .material-design-hamburger__layer:after {
+          display: block;
+          width: inherit;
+          height: 3px;
+          position: absolute;
+          background: inherit;
+          left: 0;
+          content: '';
+          background-color: white;
+          animation-duration: 300ms;
+          animation-timing-function: ease-in-out;
+        }
+        .material-design-hamburger__layer:before {
+          bottom: 200%;
+        }
+        .material-design-hamburger__layer:after {
+          top: 200%;
+        }
+        .material-design-hamburger__icon--to-arrow {
+          animation-name: material-design-hamburger__icon--slide;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--to-arrow:before {
+          animation-name: material-design-hamburger__icon--slide-before;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--to-arrow:after {
+          animation-name: material-design-hamburger__icon--slide-after;
+          animation-fill-mode: forwards;
+        }
+        .material-design-hamburger__icon--from-arrow {
+          animation-name: material-design-hamburger__icon--slide-from;
+        }
+        .material-design-hamburger__icon--from-arrow:before {
+          animation-name: material-design-hamburger__icon--slide-before-from;
+        }
+        .material-design-hamburger__icon--from-arrow:after {
+          animation-name: material-design-hamburger__icon--slide-after-from;
+        }
+        @keyframes material-design-hamburger__icon--slide {
+          0% {
+          }
+          100% {
+            transform: rotate(180deg);
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-before {
+          0% {
+          }
+          100% {
+            transform: rotate(45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-after {
+          0% {
+          }
+          100% {
+            transform: rotate(-45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-from {
+          0% {
+            transform: rotate(-180deg);
+          }
+          100% {
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-before-from {
+          0% {
+            transform: rotate(45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+          100% {
+          }
+        }
+        @keyframes material-design-hamburger__icon--slide-after-from {
+          0% {
+            transform: rotate(-45deg);
+            margin: 3% 37%;
+            width: 75%;
+          }
+          100% {
+          }
+        }
+
+        /*dashboard css*/
+        .dashboard-wrapper {
+          text-align: center;
+          background-color: rgb(190,214,47);
+          width: 100%;
+        }
+        .dash {
+          display: block;
+          margin-top: 2%;
+          margin-bottom: 5%;
+        }
+        .dash img,p {
+          display: inline-block;
+          vertical-align: top;
+          color: white;
+          font-family: 'Roboto', sans-serif;
+        }
+        .dash p {
+          font-size: 1.8em;
+        }
+        .dash img {
+          width: 2.5em;
+          height: 2.5em;
+        }
+
+        /*map css*/
+        #map {
+          width: 100%;
+          height: 40em;
+        }
+
+        /*end wrapper css*/
+        .end-wrapper {
+          position: fixed;
+          top: 80%;
+          text-align: center;
+        }
+        .start-walk-btn {
+            border: none;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 3px;
+            background-color: rgb(190,214,47);
+            width: 50px;
+            padding: 4%;
+            padding-left: 6%;
+            padding-right: 6%;
+            width: auto;
+            color: white;
+            font-size: 1.2.em;
+            box-shadow: 0px 0px 1px rgba(0,0,0,0.1);
+            position: absolute;
+            z-index: 999;
+        }
+    </style>
+    <script  type="text/javascript" src="jquery-1.11.3.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&sensor=true"></script>
+        <script  type="text/javascript" src="explore.js"></script>
+        <script type="text/javascript">
+            var tracking = false;
+            var shown_path = null;
+
+            function onTrackPathClicked() {
+                if(false == tracking) {
+                    startTrackingPath();
+                    tracking = true;
+                    $(this).text("結束紀錄");
+                    if(shown_path != null) {
+                        shown_path.setMap(null);
+                    }
+                    shown_path = null;
+                }
+                else {
+                    path = stopTrackingPath();
+                    tracking = false;
+                    $(this).text("紀錄路徑");
+                    shown_path = createPath(path);
+                    shown_path.setMap(window.map);
+                }
+            }
+
+            $( document ).ready(function() {
+        $("#hospitals").on("click", function() {
+          clearMarks();
+          markHospitals();
+        });
+        $("#parks").on("click", function() {
+          clearMarks();
+          markParks();
+        });
+        $("#restaurants").on("click", function() {
+          clearMarks();
+          markRestaurants();
+        });
+
+                $("#move_to").on("click", function() {
+                    moveToAddress(window.map, $("#address").val());
+                });
+
+                $("#current_location").on("click", function() {
+                    centerOnCurrentLocation(window.map);
+                });
+
+                $("#track_path").on("click", onTrackPathClicked);
+            });
+        </script>
+    </head>
+    <body onload = "initMap();">
+        <div class="wrapper">
+            <section class="ham-wrapper">
+              <section class="material-design-hamburger">
+                <button class="material-design-hamburger__icon">
+                  <span class="material-design-hamburger__layer"></span>
+                </button>
+                <div class="menu-stat"><h3>散步去</h3></div>
+                <div class="menu-search">
+                  <img src="http://i.imgur.com/WRVlCKn.png">
+                </div>
+              </section>
+
+              <section class="menu menu--off">
+                <div class="menu-header">
+                  <div class="menu-img-wrapper">
+                  </div>
+                  <div class="menu-name-wrapper">
+                    <p>OOO</p>
+                  </div>
+                </div>
+                <div id="walk">散步去</div>
+                <div id="talk">聊聊天</div>
+                <div id="explore">探索周邊</div>
+                <div id="">散步紀錄</div>
+                <div id="">帳戶管理</div>
+                <div id="#">關於我們</div>
+              </section>
+            </section>
+            <div class="dashboard-wrapper">
+              <div class="dash">
+                <img src="http://i.imgur.com/zGz1nk9.png">
+                <p>1<small>h</small>&nbsp;18<small>m</small>&nbsp;36<small>s</small></p>
+              </div>
+              <div class="dash">
+                <img src="http://i.imgur.com/PvXSAW4.png">
+                <p>4.75<small>km</small></p>
+              </div>
+            </div>
+            <div id="map"></div>
+            <div class="end-wrapper">
+              <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+        <script>//menu toggle
+        (function() {
+
+          'use strict';
+
+          document.querySelector('.material-design-hamburger__icon').addEventListener(
+            'click',
+            function() {      
+              var child;
+              
+              document.body.classList.toggle('background--blur');
+              this.parentNode.nextElementSibling.classList.toggle('menu--on');
+
+              child = this.childNodes[1].classList;
+
+              if (child.contains('material-design-hamburger__icon--to-arrow')) {
+                child.remove('material-design-hamburger__icon--to-arrow');
+                child.add('material-design-hamburger__icon--from-arrow');
+              } else {
+                child.remove('material-design-hamburger__icon--from-arrow');
+                child.add('material-design-hamburger__icon--to-arrow');
+              }
+
+            });
+
+        })();
+        </script>
+    </body>
+</html>
