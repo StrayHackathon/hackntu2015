@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>地圖</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+    <script  type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <script  type="text/javascript" src="explore.js"></script>
+    <script type="text/javascript">
+		$( document ).ready(function() {
+			$("button").on("click", function() {
+				switch($(this).attr("id")) {
+					case "hospital":
+					  markSites(window.map, hospitals);
+					  break;
+				}
+			});
+		});
+    </script>
+  </head>
+  <body>
+	  <button id="hospital">醫院</button>
+	  <button id="park">公園</button>
+    <div id="map"></div>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&callback=initMap"></script>
+  </body>
+</html>
+
