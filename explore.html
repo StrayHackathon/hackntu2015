@@ -18,19 +18,34 @@
     <script  type="text/javascript" src="explore.js"></script>
     <script type="text/javascript">
 		$( document ).ready(function() {
-			$("button").on("click", function() {
-				switch($(this).attr("id")) {
-					case "hospital":
-					  markSites(window.map, hospitals);
-					  break;
-				}
+			var btns = new Array("#hospital");
+			for(var i = 0; i < btns.length; ++i) {
+				$(btns[i]).on("click", function() {
+					switch($(this).attr("id")) {
+						case "hospital":
+						  markSites(window.map, hospitals);
+						  break;
+					}
+				});
+			}
+
+			$("#move_to").on("click", function() {
+				moveToAddress(window.map, $("#address").val());
 			});
+
+			$("#current_location").on("click", function() {
+				centerOnCurrentLocation(window.map);
+			});
+
 		});
     </script>
   </head>
   <body>
 	  <button id="hospital">醫院</button>
 	  <button id="park">公園</button>
+	  <input id="address" type="address" />
+	  <button id="move_to">移到</button>
+	  <button id="current_location">目前位置</button>
     <div id="map"></div>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&callback=initMap"></script>

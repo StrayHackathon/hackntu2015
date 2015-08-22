@@ -60,6 +60,13 @@ function getGeoCode(map, addr, callback) {
 	});
 }
 
+// move current view to the specified address
+function moveToAddress(map, address) {
+	getGeoCode(map, address, function(pos) {
+		map.setCenter(pos);
+	});
+}
+
 // add a mark for the address on the map
 function markAddress(map, address) {
 	getGeoCode(map, address, function(pos) {
