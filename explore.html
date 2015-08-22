@@ -4,15 +4,119 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>地圖</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- font awesome -->
+
     <style>
       html, body {
         height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
       }
       #map {
         height: 100%;
+        width: 100%;
       }
+      #functions-wrapper {
+      	position: fixed;
+      	top: 10px;
+      	left: 10px;
+      }
+
+      /*FUNCTION CSS*/
+		.body {
+		  width:100%;
+		  height:100%;
+		}
+		.group 	{ 
+		  position:relative; 
+		}
+		input {
+		  font-size: 0.9em;
+		  padding:10px 10px 10px 5px;
+		  display:block;
+		  width: 11em;
+		  border:none;
+		  border-bottom:1px solid #757575;
+		  position: relative;
+		  left: 1em;
+		  background: white;
+		  border: 1px solid rgba(20,20,20,0.5);
+		  box-shadow: 0 0 5px rgba(20,20,20,0.5);
+		}
+		input:focus { 
+		  outline:none; 
+		}
+		label {
+		  color:#999; 
+		  font-size: 1em;
+		  font-weight:normal;
+		  position:absolute;
+		  pointer-events:none;
+		  top: 0.75em;
+		  left: 1.5em;
+		  transition:0.2s ease all; 
+		  -moz-transition:0.2s ease all; 
+		  -webkit-transition:0.2s ease all;
+		}
+		input:focus ~ label, input:valid ~ label 		{
+		  left: -10em;
+		  font-size: 10px;
+		  color:#5264AE;
+		}
+		input:focus ~ .bar:before, input:focus ~ .bar:after {
+		  width:80%;
+		}
+		.highlight {
+		  position:absolute;
+		  height:10%; 
+		  width: 30px; 
+		  top: 10em; 
+		  left:0;
+		  pointer-events:none;
+		  opacity:0.5;
+		}
+		input:focus ~ .highlight {
+		  -webkit-animation:inputHighlighter 0.3s ease;
+		  -moz-animation:inputHighlighter 0.3s ease;
+		  animation:inputHighlighter 0.3s ease;
+		}
+		@-webkit-keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+		@-moz-keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+		@keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+
+		.functions-wrapper form, i {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.search-icon {
+			cursor: pointer;
+			font-size: 1.5em;
+			margin-left: 1em;
+		}
+		.search-wrapper, .search-icon {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.oth-icon {
+			font-size: 1.5em;
+			vertical-align: middle;
+			margin-left: 0.5em;
+			color: rgba(20,20,20,0.9);
+			margin-left: 0.8em;
+			margin-top: 0.3em;
+			cursor: pointer;
+		}
     </style>
     <script  type="text/javascript" src="jquery-1.11.3.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&sensor=true"></script>
@@ -71,17 +175,41 @@
     </script>
   </head>
   <body onload = "initMap();">
-	  尋找：
-	  <button id="hospitals">醫院</button>
+    <div id="map"></div>
+	<div id="functions-wrapper">
+		<div class="function-header">
+			<div class="search-wrapper">
+			  <form>
+			    <div class="group">      
+			      <input type="text" required id="address">
+			      <span class="highlight"></span>
+			      <label>前往指定地址</label>
+			    </div>
+			  </form>
+			</div>
+		  <div class="search-icon">
+		  	<i class="fa fa-search" id="move_to"></i>
+		  </div>
+		  <div class="oth-icon">
+		  	<i class="fa fa-map-marker" id="current_location"></i>
+		  	<i class="fa fa-road" id="track_path" style="margin-left:5px"></i>
+		  </div>
+		</div>
+ 
+
+
+
+<!-- 	  <button id="hospitals">醫院</button>
 	  <button id="parks">公園</button>
 	  <button id="restaurants">寵物餐廳</button>
 	  <button id="friends">朋友</button>
 	  <br />
-	  <input id="address" placeholder="請輸入地址" />
+	  <input id="address" placeholder="請輸入地址" /> 
 	  <button id="move_to">移到</button>
 	  <button id="current_location">目前位置</button>
-	  <button id="track_path">紀錄路徑</button>
-    <div id="map"></div>
+	  <button id="track_path">紀錄路徑</button> -->
+	</div>
+
     <!--
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBm3Vv7k-8DiE_uBvptymYypVtYlGnqF8g&signed_in=true&callback=initMap&sensor=true"></script>
