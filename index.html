@@ -398,6 +398,59 @@
           color: rgb(190,214,47);
         }
         </style>
+        
+        <script type="text/javascript">
+        
+		$(document).ready(function() {
+			$.getJSON("data/friends.json", function(data) {
+				var social_info_wrapper = $(".social-info-wrapper");
+				var social_info_modal_wrapper = $(".social-info-modal-wrapper");
+				for(var i = 0; i < data.length; ++i) {
+					var item = data[i];
+					var content = [
+						'<div class="info social-info-', i, '" data-toggle="modal" data-target=".info-', i, '">',
+						'<div class="article-wrapper"><article>',
+							'<strong>', item.name, '</strong><span>', item.owner, '</span> <br>',
+							item.desc, '</article></div>',
+						'<div class="img-wrapper"><img src="http://i.imgur.com/uKmkbGi.png"></div>',
+						'<div class="date">', item.time, '</div></div>'].join('');
+					social_info_wrapper.append(content);
+
+					content = [
+					'<div class="modal fade info-', i ,' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">',
+					  '<div class="modal-dialog modal-sm">',
+						'<div class="modal-content">',
+						  '<div class="modal-header">',
+							'<img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">',
+							'<h3 class="modal-h">',
+							  item.name  ,'<br>',
+							  '<small>', item.owner, '</small>',
+							'</h3>',
+						  '</div>',
+						  '<div class="modal-info">',
+							'<div id="map">',
+							  '<img src="http://placehold.it/250x80">',
+							'</div>',
+							'<div class="modal-info-dec">',
+								item.detail,
+							'</div>',
+						  '</div>',
+						  '<div class="modal-inviate">',
+							'<a href="#">邀請一起跑跑</a>',
+						  '</div>',
+						'</div> <!-- don -->',
+					  '</div> <!-- don -->',
+					'</div> <!-- don -->'
+					].join("");
+					social_info_modal_wrapper.append(content);
+				}
+			}).fail(function() {
+				console.log("failed!");
+			});
+		});
+        
+        </script>
+        
     </head>
     <body>
         <div class="wrapper">
@@ -421,266 +474,12 @@
                 <img src="http://placehold.it/180x70" class="icon-1">
                 <a href="#" class="icon-link"><button class="start-walk-btn">出去跑跑</button></a>
             </div>
-            <div class="social-info-wrapper">
-                <div class="info social-info-one" data-toggle="modal" data-target=".info-one">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>胖胖</strong><span>王小明</span> <br>
-                          親人、有時過動、可能會爆衝
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:00<br>
-                      am
-                    </div>
-                </div>
-                <div class="info social-info-two" data-toggle="modal" data-target=".info-two">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>JUJU</strong><span>陳小明</span> <br>
-                          大型狗勿來!!
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:30<br>
-                      am
-                    </div>
-                </div>
-                <div class="info social-info-three" data-toggle="modal" data-target=".info-three">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>蹦蹦</strong><span>菜小明</span> <br>
-                          揪晚上一起遛狗
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:45<br>
-                      am
-                    </div>
-                </div>
-                <div class="info social-info-four" data-toggle="modal" data-target=".info-four">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>阿福</strong><span>賴小明</span> <br>
-                          尋找也愛柴柴的你
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:45<br>
-                      am
-                    </div>
-                </div>
-                <div class="info social-info-five" data-toggle="modal" data-target=".info-five">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>小黑</strong><span>林小明</span> <br>
-                          台灣土狗就是讚!
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:45<br>
-                      am
-                    </div>
-                </div>
-                <div class="info social-info-six" data-toggle="modal" data-target=".info-six">
-                    <div class="article-wrapper">
-                      <article>
-                          <strong>妙妙</strong><span>王妙妙</span> <br>
-                          狗狗是人類最好的朋友
-                      </article>
-                    </div>
-                    <div class="img-wrapper">
-                      <img src="http://i.imgur.com/uKmkbGi.png">
-                    </div>
-                    <div class="date">
-                      6:45<br>
-                      am
-                    </div>
-                </div>
-                <!-- <div class="vertcal-line-wrapper"><div class="vertical-line"></div></div> -->
-                <div class="notice-wrapper">
-                  <img src="" class="notice-icon">
-                </div>
-            </div>
-        </div>
 
+			<!-- list of friends -->
+            <div class="social-info-wrapper" />
 
-        <!-- Modal -->
-        <div class="modal fade info-one" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        <div class="modal fade info-two" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        <div class="modal fade info-three" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#http://i.imgur.com/uKmkbGi.png">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        <div class="modal fade info-four" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#http://i.imgur.com/uKmkbGi.png">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        <div class="modal fade info-five" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        <div class="modal fade info-six" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">
-                <h3 class="modal-h">
-                  胖胖<br>
-                  <small>王曉明</small>
-                </h3>
-              </div>
-              <div class="modal-info">
-                <div id="map">
-                  <img src="http://placehold.it/250x80">
-                </div>
-                <div class="modal-info-dec">
-                  胖胖是個愛玩的小狗，有時後有些過動，可能不小心爆衝，但非常的親人!快一起來散步!
-                </div>
-              </div>
-              <div class="modal-inviate">
-                <a href="#">邀請一起跑跑</a>
-              </div>
-            </div> <!-- don -->
-          </div> <!-- don -->
-        </div> <!-- don -->
-
-        
-
-
-
-
-
-
-
-
-
+			<!-- Modal -->
+			<div class="social-info-modal-wrapper" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>

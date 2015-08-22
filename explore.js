@@ -47,6 +47,16 @@ function initMap() {
 	});
 	centerOnCurrentLocation(map);
 	window.map = map;
+
+/*	
+	$.ajax({
+		url: "data/hospitals_src.json",
+		success: function(data, status) {
+			alert(data.length);
+		},
+		dataType: "json"
+	});
+*/
 }
 
 // query GeoCode of the specified address and call callback() after it's finished.
