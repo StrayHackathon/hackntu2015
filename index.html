@@ -189,10 +189,10 @@
           right: 1.5em;
           top: 0.2em;
         }
-        .menu-search img {
-          width: 1.8em;
-          height: 1.8em;
-        }
+        /*.menu-search img {
+          width: auto;
+          height: 25px;
+        }*/
         .material-design-hamburger__layer {
           display: block;
           width: 30px;
@@ -475,6 +475,13 @@
           margin-top: 5px;
           color: rgba(20,20,20,0.7);
         }
+
+
+        .mask {
+          width: 1.8em;
+          height: 1.8em;
+          overflow: none;
+        }
         </style>
         
         <script type="text/javascript">
@@ -568,7 +575,7 @@
                 </button>
                 <div class="menu-stat"><h3>散步去</h3></div>
                 <div class="menu-search">
-                  <img src="http://i.imgur.com/WRVlCKn.png">
+                  <div class="mask"><img src="http://i.imgur.com/WRVlCKn.png"></div>
                 </div>
               </section>
 
