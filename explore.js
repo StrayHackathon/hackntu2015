@@ -98,15 +98,13 @@ function loadParks(callback) {
 
 // load data of restaurants in the city
 function loadRestaurants(callback) {
-		console.log("HERE");
 	getJSON("data/restaurants.json", function(data) {
 		// the "pos" in the file are in TWD97 format
-		console.log("HERE");
 		for(var i = 0; i < data.length; ++i) {
 			var item = data[i];
 			if(item.pos) {
 				item.pos = twd97_to_latlng(item.pos[0], item.pos[1]);
-				console.log(item.pos);
+				// console.log(item.pos);
 			}
 		}
 		restaurants = data;
@@ -162,10 +160,15 @@ function markParks() {
 }
 
 function markRestaurants() {
+	current_marks = []
 	if(restaurants) {
 		for(var i = 0; i < restaurants.length; ++i) {
 			var item = restaurants[i];
-			
+			var marker = new google.maps.Marker({
+				position: item.pos,
+				map: window.map
+			});
+			current_marks.push(marker);
 		}
 	}
 	else {
