@@ -479,18 +479,34 @@
         
         <script type="text/javascript">
         
+        var dog_pics = [
+			"dog-1365536.jpg",
+			"dog-1369266.jpg",
+			"dog-1474496.jpg",
+			"dog-1534524.jpg",
+			"friendship-1395814.jpg",
+			"npv7779.jpg",
+			"perro-1572012.jpg",
+			"perro-dog-1372840.jpg",
+			"playing-dogs-1404706.jpg"
+		];
+
 		$(document).ready(function() {
 			$.getJSON("data/friends.json", function(data) {
 				var social_info_wrapper = $(".social-info-wrapper");
 				var social_info_modal_wrapper = $(".social-info-modal-wrapper");
 				for(var i = 0; i < data.length; ++i) {
 					var item = data[i];
+					var owner = item.owner;
+					// randomly pick a picture for the dog
+					var idx = Math.round(Math.random() * (dog_pics.length - 1));
+					var pic = "data/pics/" + dog_pics[idx];
 					var content = [
 						'<div class="info social-info-', i, '" data-toggle="modal" data-target=".info-', i, '">',
 						'<div class="article-wrapper"><article>',
-							'<strong>', item.name, '</strong><span>', item.owner, '</span> <br>',
+							'<strong>', item.name, '</strong><span>', owner.name, '</span> <br>',
 							item.desc, '</article></div>',
-						'<div class="img-wrapper"><img src="http://i.imgur.com/uKmkbGi.png"></div>',
+						'<div class="img-wrapper"><img src="', pic, '"></div>',
 						'<div class="date">', item.time, '</div></div>'].join('');
 					social_info_wrapper.append(content);
 
@@ -502,12 +518,13 @@
 							'<img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">',
 							'<h3 class="modal-h">',
 							  item.name  ,'<br>',
-							  '<small>', item.owner, '</small>',
+							  '<small>飼主:', owner.name, '(', owner.age, '歲&nbsp;', owner.gender, ')</small><br />',
+							  '<small>職業:', owner.occation, '</small>',
 							'</h3>',
 						  '</div>',
 						  '<div class="modal-info">',
 							'<div id="map">',
-							  '<img src="http://placehold.it/250x80">',
+							  '<img src="', pic, '">',
 							'</div>',
 							'<div class="modal-info-dec">',
 								item.detail,
