@@ -98,7 +98,17 @@ function loadParks(callback) {
 
 // load data of restaurants in the city
 function loadRestaurants(callback) {
+		console.log("HERE");
 	getJSON("data/restaurants.json", function(data) {
+		// the "pos" in the file are in TWD97 format
+		console.log("HERE");
+		for(var i = 0; i < data.length; ++i) {
+			var item = data[i];
+			if(item.pos) {
+				item.pos = twd97_to_latlng(item.pos[0], item.pos[1]);
+				console.log(item.pos);
+			}
+		}
 		restaurants = data;
 		callback();
 	});
