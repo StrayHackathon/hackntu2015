@@ -121,6 +121,12 @@
           padding: 0;
           margin: 0;
         }
+        .menu-icon {
+          width: 2em;
+          height: 2em;
+          border-radius: 50%;
+          margin-right: 2em;
+        }
         .menu-img-wrapper {
           width: 5em;
           height: 5em;
@@ -388,6 +394,7 @@
           border-radius: 50%;
           border: none;
           box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+          cursor: pointer;
         }
 
         /*Modal css*/
@@ -438,6 +445,32 @@
         }
         .modal-inviate a:hover {
           color: rgb(190,214,47);
+        }
+
+        /*Notice modal css*/
+        .modal_notice_header {
+          background-color: rgb(224,232,155);
+          width: 100%;
+          font-size: 1.2em;
+          color: white;
+          font-family: 'cwTeXHei', serif;
+          padding: 5%;
+          text-align: left;
+        }
+        .notice_info {
+          border-bottom: 1px solid rgba(20,20,20,0.4);
+          margin-top: 2em;
+          font-family: 'cwTeXHei', serif;
+        }
+        .notice_info img {
+          width: 5em;
+          height: 5em;
+          border-radius: 50%;
+        }
+        .notice_info p {
+          width: 18em;
+          margin-top: 5px;
+          color: rgba(20,20,20,0.7);
         }
         </style>
         
@@ -490,9 +523,13 @@
 				console.log("failed!");
 			});
 
-      // $("").click(function(){
-      //   $("").load("")
-      // });
+      $(".start-walk-btn").click(function(){
+        $("html").load("walk.html")
+      });
+
+      $("#walk").click(function(){
+        $("html").load("index.html")
+      });
 
 		});
         
@@ -501,7 +538,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="notice-wrapper">
+            <div class="notice-wrapper" data-toggle="modal" data-target=".modal_notice">
               <img src="http://i.imgur.com/GIr47Fb.png" class="notice-icon">
             </div>
             <section class="ham-wrapper">
@@ -523,10 +560,28 @@
                     <p>OOO</p>
                   </div>
                 </div>
-                <div id="walk">散步去</div>
-                <div id="talk">聊聊天</div>
-                <div id="explore">探索周邊</div>
-                <div id="record">散步紀錄</div>
+                <a href="walk.html">
+                  <div id="walk">
+                  <img src="http://i.imgur.com/M9GLzlE.png" class="menu-icon">
+                  散步去
+                  </div>
+                </a>
+                <a href="talk.html">
+                  <div id="talk">
+                    聊聊天
+                  </div>
+                </a>
+                <a href="explore_redo">
+                  <div id="explore">
+                    <img src="http://i.imgur.com/OTwl2gZ.png" class="menu-icon">
+                    探索周邊
+                  </div>
+                </a>
+                <a href="record.html">
+                  <div id="record">
+                    散步紀錄
+                  </div>
+                </a>                
                 <div id="">帳戶管理</div>
                 <div id="#">關於我們</div>
               </section>
@@ -541,6 +596,49 @@
   			       <!-- Modal -->
   			       <div class="social-info-modal-wrapper" />
             </div>
+
+                <!-- Modal for notice button -->
+                <div class="modal fade modal_notice" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal_notice_header">
+                        <p>通知訊息</p>
+                      </div>
+                      <div class="notice_info">
+                        <img src="http://i.imgur.com/MQthTJe.jpg">
+                        <p>
+                          Matt Wu<br>
+                          寄送了散步邀請給您<br>
+                          <small>6:15pm</small>
+                        </p>
+                      </div>
+                      <div class="notice_info">
+                        <img src="http://i.imgur.com/Q9Huoos.png">
+                        <p>
+                          系統提醒<br>
+                          再10分鐘，別忘了毛小孩出去跑跑囉!<br>
+                          <small>6:15pm</small>
+                        </p>
+                      </div>
+                      <div class="notice_info">
+                        <img src="http://i.imgur.com/jn0zU2y.jpg">
+                        <p>
+                          Ina Wang<br>
+                          寄送了散步邀請給您<br>
+                          <small>昨日</small>
+                        </p>
+                      </div>
+                      <div class="notice_info">
+                        <img src="http://i.imgur.com/pSzZtz4.jpg">
+                        <p>
+                          葛承恩<br>
+                          寄送了散步邀請給您<br>
+                          <small>周五</small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
