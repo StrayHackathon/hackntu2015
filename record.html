@@ -42,6 +42,7 @@
           width: 100%;
           height: 100%;
           font-family: 'cwTeXHei', serif;
+          background-color: rgb(224,232,155);
         }
         .wrapper {
             width: 100%;
@@ -57,7 +58,6 @@
           height: 100%;
           transition: all 300ms ease-in-out;  
           padding: 0;
-          background-color: rgb(224,232,155);
         }
         .menu {
           font-size:2em;
@@ -119,6 +119,12 @@
           padding: 0;
           margin: 0;
         }
+        .menu-icon {
+          width: 2em;
+          height: 2em;
+          border-radius: 50%;
+          margin-right: 2em;
+        }
         .menu-img-wrapper {
           width: 5em;
           height: 5em;
@@ -127,6 +133,9 @@
           background-color: gray;
           position: relative;
           top: 5em;
+          background-image: url(http://i.imgur.com/sEfuvA0.jpg);
+          background-size: contain;
+          background-position: center;
         }
         .menu-name-wrapper {
           color: white;
@@ -282,7 +291,6 @@
           }
         }
 
-
         /*Section css*/
         .map-section-wrapper {
             background-color: rgb(224,232,155);
@@ -345,7 +353,7 @@
                 <button class="material-design-hamburger__icon">
                   <span class="material-design-hamburger__layer"></span>
                 </button>
-                <div class="menu-stat"><h3>散步紀錄</h3></div>
+                <div class="menu-stat"><h3>散步去</h3></div>
                 <div class="menu-search">
                   <img src="http://i.imgur.com/WRVlCKn.png">
                 </div>
@@ -356,15 +364,32 @@
                   <div class="menu-img-wrapper">
                   </div>
                   <div class="menu-name-wrapper">
-                    <p>OOO</p>
+                    <p>Ali conners</p>
                   </div>
                 </div>
-                <div id="walk">散步去</div>
-                <div id="talk">聊聊天</div>
-                <div id="explore">探索周邊</div>
-                <div id="record">散步紀錄</div>
-                <div id="">帳戶管理</div>
-                <div id="#">關於我們</div>
+                <a href="index.html">
+                  <div id="walk">
+                  <img src="http://i.imgur.com/M9GLzlE.png" class="menu-icon">
+                  散步去
+                  </div>
+                </a>
+                <a href="talk.html">
+                  <div id="talk">
+                    <img src="http://i.imgur.com/761T048.png" class="menu-icon">
+                    聊聊天
+                  </div>
+                </a>
+                <a href="explore_redo.html">
+                  <div id="explore">
+                    <img src="http://i.imgur.com/OTwl2gZ.png" class="menu-icon">
+                    探索周邊
+                  </div>
+                </a>
+                <a href="record.html">
+                  <div id="record">
+                    <img src="http://i.imgur.com/y0N8Y8L.png" class="menu-icon">
+                    散步紀錄
+                  </div>
               </section>
             </section>
 
