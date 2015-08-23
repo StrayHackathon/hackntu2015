@@ -328,6 +328,15 @@
           font-family: 'cwTeXHei', serif;
           padding: 1%;
           margin-bottom: 1em;
+          margin-top: 3px;
+        }
+        .menu-search {
+          width: 50%;
+          position: relative;
+          right: 0px;
+        }
+        .menu-search input,img {
+          display: inline-block;
         }
 
         
@@ -399,7 +408,8 @@
                 </button>
                 <div class="menu-stat"><h3>探索周邊</h3></div>
                 <div class="menu-search">
-                  <img src="http://i.imgur.com/WRVlCKn.png">
+                  <input id="address" placeholder="請輸入地址" /> 
+                  <img src="http://i.imgur.com/WRVlCKn.png" class="menu-search-image">
                 </div>
               </section>
 
@@ -442,7 +452,7 @@
                 <div class="section map-one" id="restaurants">寵物餐廳</div>
                 <div class="section map-one" id="parks">跑跑公園</div>
 
-        				<input id="address" placeholder="請輸入地址" /> 
+        				
                 <i class="fa fa-search" id="move_to"></i>
                 <i class="fa fa-map-marker" id="current_location"></i>
             </div>
