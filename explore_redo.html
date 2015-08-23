@@ -322,10 +322,7 @@
 
         /*map-search-wrapper css*/
         .map-search-wrapper {
-          position: absolute;
           z-index: 998;
-          top: 30%;
-          left: 3%;
         }
         .map-search-wrapper #address,i {
           display: inline-block;
@@ -406,11 +403,7 @@
     </head>
     <body onload = "initMap();">
         <div class="wrapper">
-            <div class="map-search-wrapper">
-              <input id="address" placeholder="請輸入地址" /> 
-              <i class="fa fa-search fa-2x" id="move_to"></i>
-              <i class="fa fa-map-marker fa-2x" id="current_location"></i>
-            </div>
+
             <section class="ham-wrapper">
               <section class="material-design-hamburger">
                 <button class="material-design-hamburger__icon">
@@ -460,6 +453,11 @@
                 <div class="section map-one" id="hospitals">動物醫院</div>
                 <div class="section map-one" id="restaurants">寵物餐廳</div>
                 <div class="section map-one" id="parks">跑跑公園</div>
+            <div class="map-search-wrapper">
+              <input id="address" placeholder="請輸入地址" /> 
+              <i class="fa fa-search fa-2x" id="move_to"></i>
+              <i class="fa fa-map-marker fa-2x" id="current_location"></i>
+            </div>
             </div>
 
             <div id="map">
