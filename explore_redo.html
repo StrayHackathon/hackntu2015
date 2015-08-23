@@ -320,6 +320,16 @@
             width: 100%;
         }
 
+        /*Function map css*/
+        #address {
+          background: white;
+          border: 1px solid rgba(20,20,20,0.4);
+          box-shadow: 0 0 3px rgba(20,20,20,0.3);
+          font-family: 'cwTeXHei', serif;
+          padding: 1%;
+          margin-bottom: 1em;
+        }
+
         
         </style>
         <script  type="text/javascript" src="jquery-1.11.3.min.js"></script>
@@ -432,9 +442,9 @@
                 <div class="section map-one" id="restaurants">寵物餐廳</div>
                 <div class="section map-one" id="parks">跑跑公園</div>
 
-				<input id="address" placeholder="請輸入地址" /> 
-				<button id="move_to">移到</button>
-				<button id="current_location">目前位置</button>
+        				<input id="address" placeholder="請輸入地址" /> 
+                <i class="fa fa-search" id="move_to"></i>
+                <i class="fa fa-map-marker" id="current_location"></i>
             </div>
 
             <div id="map"></div>
