@@ -363,33 +363,20 @@
                 }
             }
 
-            $( document ).ready(function() {
-        $("#hospitals").on("click", function() {
-          clearMarks();
-          markHospitals();
-        });
-        $("#parks").on("click", function() {
-          clearMarks();
-          markParks();
-        });
-        $("#restaurants").on("click", function() {
-          clearMarks();
-          markRestaurants();
-        });
+			function showPath() {
+				$.getJSON("data/walk_history.json", function(data) {
+					var record = data[0];
+					// record.start;
+					// record.duration;.
+					// show the path on the map
+					var showPath = createPath(record.path);
+					showPath.setMap(window.map);
+				});
+			}
 
-                $("#move_to").on("click", function() {
-                    moveToAddress(window.map, $("#address").val());
-                });
-
-                $("#current_location").on("click", function() {
-                    centerOnCurrentLocation(window.map);
-                });
-
-                $("#track_path").on("click", onTrackPathClicked);
-            });
         </script>
     </head>
-    <body onload = "initMap();">
+    <body onload = "initMap(); showPath();">
         <div class="wrapper">
             <section class="ham-wrapper">
               <section class="material-design-hamburger">
