@@ -344,28 +344,34 @@
                     shown_path = createPath(path);
                     shown_path.setMap(window.map);
                 }
+				return false;
             }
 
             $( document ).ready(function() {
 				$("#hospitals").on("click", function() {
 					clearMarks();
 					markHospitals();
+					return false;
 				});
 				$("#parks").on("click", function() {
 					clearMarks();
 					markParks();
+					return false;
 				});
 				$("#restaurants").on("click", function() {
 					clearMarks();
 					markRestaurants();
+					return false;
 				});
 
                 $("#move_to").on("click", function() {
                     moveToAddress(window.map, $("#address").val());
+					return false;
                 });
 
                 $("#current_location").on("click", function() {
                     centerOnCurrentLocation(window.map);
+					return false;
                 });
 
                 $("#track_path").on("click", onTrackPathClicked);
@@ -425,7 +431,7 @@
             </div>
 
             <div id="map"></div>
-
+<!--
     <button id="hospitals">醫院</button>
     <button id="parks">公園</button>
     <button id="restaurants">寵物餐廳</button>
@@ -435,7 +441,7 @@
     <button id="move_to">移到</button>
     <button id="current_location">目前位置</button>
     <button id="track_path">紀錄路徑</button>
-
+-->
 
 
         </div>
