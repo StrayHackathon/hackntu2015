@@ -98,6 +98,7 @@ function loadParks(callback) {
 
 // load data of restaurants in the city
 function loadRestaurants(callback) {
+	// http://gis.epa.gov.tw/epagis102/TransCoordFrame.aspx
 	getJSON("data/restaurants.json", function(data) {
 		// the "pos" in the file are in TWD97 format
 		for(var i = 0; i < data.length; ++i) {
@@ -194,7 +195,7 @@ function centerOnCurrentLocation(map) {
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 16,
-		center: {lat: 25.03, lng: 121.30}
+		center: {lat: 25.021796, lng: 121.535285}
 	});
 	centerOnCurrentLocation(map);
 	window.map = map;
