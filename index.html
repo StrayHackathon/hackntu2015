@@ -486,6 +486,19 @@
         
         <script type="text/javascript">
         
+        var owner_photos = [
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xta1/v/t1.0-1/c1.0.435.435/s160x160/10805585_716015925161328_351031635308589633_n.jpg?oh=f629bcb7ce469ec10be37b4bc2baa39e&oe=567ABC0A&__gda__=1450003410_b6f46187c98f64b1d26c7f9d77a71c67",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p160x160/11393250_933898603299066_64417033442651853_n.jpg?oh=1cb06d77abe2d522d9b0fad89e217b69&oe=567C12DC&__gda__=1450690587_97bb145bb32489889f9ffaf6230c9ed7",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p160x160/11152354_830060430416263_3466007287167521309_n.jpg?oh=c34e8e810a5d53ed826ff3f7492dd9b4&oe=566FC0E8&__gda__=1450725412_47489160bbce5c86a794d8b6159d50aa",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c20.0.160.160/p200x200/1454740_10204282438925070_590147234348388093_n.jpg?oh=39c21f2f3e79fc947b91377247851093&oe=567A8E09&__gda__=1451251145_10916000ac47b14fab06dd45ff04d480",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/c16.15.189.189/s160x160/1934738_101358366544180_3191234_n.jpg?oh=e7b19b3df97e151c3927b9c76b709d8a&oe=567CE8C4&__gda__=1446869020_44948d4545399217e0fc86bf96eea7e9",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/1506021_10152205537319780_497147534_n.jpg?oh=3b3abd51c5359fdda40c368e1d9de979&oe=566E1EFE&__gda__=1450117961_1fdd2c26cc720b6a4869c5604966b8f8",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/1379812_10202771159135044_2105092238_n.jpg?oh=ec95b1efbd5e3b0074179aeb8993dad7&oe=56844845&__gda__=1446641031_4b029eca2f1c111b6a557c0affcfb33a",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xta1/v/t1.0-1/p160x160/11108834_10202511115258600_7213092576072748324_n.jpg?oh=0dcd2e4f1c07a19e73d4ea284f2e9e43&oe=567F2101&__gda__=1449871230_541bf6a8305b6838f49300aeef53479e",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p160x160/10363699_847846845271765_9004656495933177706_n.jpg?oh=4eb420c945ced7cf131983dc0a5ebc52&oe=56705049&__gda__=1446798469_8843517feb1084a25f1a6b6cebf336cc",
+			"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/v/t1.0-1/c74.23.288.288/s160x160/529173_386136471408454_234007109_n.jpg?oh=6a20c526f08c71a5c7cec70ab5444b2c&oe=56737A3C&__gda__=1451086121_0a22f40769d19262a70c48fa0d9696bc"
+		];
+
         var dog_pics = [
 			"dog-1365536.jpg",
 			"dog-1369266.jpg",
@@ -507,13 +520,17 @@
 					var owner = item.owner;
 					// randomly pick a picture for the dog
 					var idx = Math.round(Math.random() * (dog_pics.length - 1));
-					var pic = "data/pics/" + dog_pics[idx];
+					var dog_pic = "data/pics/" + dog_pics[idx];
+
+					idx = Math.round(Math.random() * (owner_photos.length - 1));
+					var owner_photo = owner_photos[idx];
+
 					var content = [
 						'<div class="info social-info-', i, '" data-toggle="modal" data-target=".info-', i, '">',
 						'<div class="article-wrapper"><article>',
 							'<strong>', item.name, '</strong><span>', owner.name, '</span> <br>',
 							item.desc, '</article></div>',
-						'<div class="img-wrapper"><img src="', pic, '" style="width:3em;"></div>',
+						'<div class="img-wrapper"><img src="', dog_pic, '" style="width:3em;"></div>',
 						'<div class="date">', item.time, '</div></div>'].join('');
 					social_info_wrapper.append(content);
 
@@ -522,7 +539,7 @@
 					  '<div class="modal-dialog modal-sm">',
 						'<div class="modal-content">',
 						  '<div class="modal-header">',
-							'<img src="http://i.imgur.com/uKmkbGi.png" class="modal-img">',
+							'<img src="', owner_photo, '" class="modal-img">',
 							'<h3 class="modal-h">',
 							  item.name  ,'<br>',
 							  '<small>飼主:', owner.name, '(', owner.age, '歲&nbsp;', owner.gender, ')</small><br />',
@@ -531,7 +548,7 @@
 						  '</div>',
 						  '<div class="modal-info">',
 							'<div id="map">',
-							  '<img src="', pic, '" style="width:250px;">',
+							  '<img src="', dog_pic, '" style="width:250px;">',
 							'</div>',
 							'<div class="modal-info-dec">',
 								item.detail,
